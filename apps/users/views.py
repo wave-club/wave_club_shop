@@ -8,6 +8,8 @@ from django.contrib.auth.hashers import make_password
 from .models import UserProfile
 from .forms import LoginForm, RegisterForm
 
+from utils.email_send import send_register_email
+
 # Create your views here.
 
 class RegisterView(View):
@@ -30,6 +32,8 @@ class RegisterView(View):
             user_profile.name = name
             user_profile.password = make_password(password)
             user_profile.save()
+
+            # send_register_email(user_name, "register")
             return redirect('/login/')
         else:
             return render(request, 'register.html', {'register_form': register_form})    

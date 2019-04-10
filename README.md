@@ -1,1 +1,1 @@
- # wave-club-shop  
+ # wave_club_shop  
