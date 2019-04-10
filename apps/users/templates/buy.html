@@ -1,0 +1,193 @@
+
+<!doctype html>
+<html lang="en">
+    {% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>☆助力2019☆</title>
+
+    <link href="/static/buy/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .form-control::placeholder {
+          color: #ccc;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <link href="/static/buy/form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+
+{% if request.user.is_authenticated %}
+<div class="container">
+        <div class="py-5 text-center">
+          <img class="d-block mx-auto mb-4" src="{% static '/img/logo.png' %}" alt="" >
+          <h2>客服qq-1310525081 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1310525081&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1310525081:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> </h2>
+          <p class="lead" style="text-align: left;">
+                 【价格说明】:<br />
+                  github star 1¥ 1个，fork 2¥ 1个,  follow 2 ¥1个，  watch 3 ¥1个 , 评论3¥1个， issue4¥1个,修改commits 小绿点显示200¥<br />
+          </p>
+        </div>
+        <div class="text-center">
+            <a href="/goodsList/">查看历史订单</a>
+            
+        </div>
+
+        <div class="row" style="color:red; margin: 10px 0;">
+        
+        请勿捣乱，都不容易，请在在当天24点前完成支付。<br />
+        一次性买的较多，star时间较长的可以延迟。<br />
+        下单完成之后可能存在延迟，因为有其他的项目在运行，之后会逐步开始增加。预计2分钟能1-3个的速度增加
+        </div>
+        <div class="row">
+          
+          <div class="col-md-12 order-md-1">
+            <form class="needs-validation" action="/buy/" method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="contact_action">联系方式 <span class="text-muted">(必填)</span></label>
+                <input type="text" class="form-control" id="contact_action" name="contact_action" placeholder="微信，qq，邮箱之类" required>
+                <div class="invalid-feedback">
+                  请输入一个有效的联系方式，以供联系
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label for="address">项目地址（star, fork, watch 使用）<span class="text-muted">(必填)</span></label>
+                <input type="text" class="form-control" id="project_url" name="project_url" placeholder="https://github.com/imgges/imgges-app" required>
+                <div class="invalid-feedback">
+                  请输入需要github项目地址
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                  <label for="address">star的个数<span class="text-muted">(必填)</span></label>
+                  <input type="text" class="form-control" id="star_num" name="star_num" placeholder="此页面最大50, 需要更多可以备注留言" required>
+                  <div class="invalid-feedback">
+                      请输入需要github项目地址star的个数
+                  </div>
+              </div>
+              
+              <div class="mb-3">
+                  <label for="address">fork的个数<span class="text-muted">(可选)</span></label>
+                  <input type="text" class="form-control" id="fork_num" name="fork_num" placeholder="此页面最大50, 需要更多可以备注留言" >
+                  <div class="invalid-feedback">
+                      请输入需要github项目地址fork的个数
+                  </div>
+              </div>
+              
+              <div class="mb-3">
+                  <label for="address">watch的个数<span class="text-muted">(可选)</span></label>
+                  <input type="text" class="form-control" id="watch_num" name="watch_num" placeholder="此页面最大50, 需要更多可以备注留言" >
+                  <div class="invalid-feedback">
+                      请输入需要github项目地址watch的个数
+                  </div>
+              </div>
+              
+              <div class="mb-3">
+                  <label for="address">follow的个数<span class="text-muted">(可选)</span></label>
+                  <input type="text" class="form-control" id="follow_num" name="follow_num" placeholder="此页面最大50, 需要更多可以备注留言" >
+                  <div class="invalid-feedback">
+                      请输入需要github项目地址follow的个数
+                  </div>
+              </div>
+      
+      
+              <hr class="mb-4">
+      
+              <h4 class="mb-3">备注</h4>
+             
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <textarea  class="form-control" id="cc-expiration" placeholder=""  rows="10" ></textarea>
+                </div>
+              </div>
+              <hr class="mb-4">
+              <button type="button" class="btn btn-primary" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >开始项目</button><span style="color:green; margin-left: 10px;">建议小额购买，每次少买点,效果明显</span>
+                 
+        <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            确定？
+            下单完成之后可能存在延迟，因为有其他的项目在运行，之后会逐步开始增加。预计2分钟能1-3个的速度增加
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          <button class="btn btn-primary " type="submit">开始项目</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+            </form>
+          </div>
+        </div>
+   
+
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2017-2019 浪潮</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Support</a></li>
+          </ul>
+        </footer>
+          </div>
+{% else %}
+<h2>此操作需要先登录 <a href="/login/">点击登录</a></h2>
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static '/img/logo.png' %}" alt="" >
+        <h2>客服qq-1310525081 </h2>
+        <p class="lead" style="text-align: left;">
+                1.都是先star完， 你看号的质量，满意付款，长期合作，【先刷在给钱】, <br />
+                2.客户的任何信息是绝对的保密<br />
+                3.  全是【2010-2017】年一直【活跃的,大部分有头像】， <br />
+                4.【有代码提交的高质量】账号。每个用户都生成一份唯一的排序，这些号每天从10000个项目池里面随机star， <br />
+                5. 点完你的我还需要随机点1-6个左右其他的项目混淆 <br />
+                6.还有几千次提交的2010-2017年的账号出售<br />
+                7.安全系数无懈可击，一切随机的， 有时候1个账号star需要等10000秒， 当然可以修改参数【自助加星不需要等待】><br />
+                8.高安全系数，高质量，采用高匿无重复IP ,从源头治理风险<br />
+                
+               【价格说明】:<br />
+                github star 1¥ 1个，fork 2¥ 1个,  follow 2 ¥1个，  watch 3 ¥1个 , 评论3¥1个， issue4¥1个,修改commits 小绿点显示200¥<br />
+    
+        </p>
+      </div>
+</div>
+
+
+
+{% endif %}
+
+
+<script src="/static/buy/jquery-3.3.1.slim.min.js" ></script>
+<script src="/static/buy/bootstrap.bundle.min.js" ></script>
+<script src="/static/buy/form-validation.js"></script>
+
+</body>
+</html>

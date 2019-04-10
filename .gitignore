@@ -1,0 +1,4 @@
+__pycache__/
+.DS_Store
+mylog.log
+wave-club-shop/settings.py

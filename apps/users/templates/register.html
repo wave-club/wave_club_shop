@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/login/login.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/login/register.css' %}"/>
+    <script src="{% static 'js/jquery-1.8.3.js' %}"></script>
+</head>
+<body>
+<header>
+    <div class="inner1 clearfix">
+        <div class="logo">
+            <img src="/static/img/logo.png" alt="">
+        </div>
+        <div class="nav">
+            <ul class="clearfix">
+              
+                <li>
+                    <a href="/buy/">会员自助购买</a>
+                </li>
+                <li>
+                    <a href="/goodsList/">订单历史</a>
+                </li>
+            </ul>
+        </div>
+        <div class="loginInfo">
+            <ul class="clearfix">
+                <li>
+                    <a class="login" href="/login">登陆</a>
+                </li>
+                <li>
+                    <a href="/register/">注册</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<main></main>
+<main>
+    <div class="loginOperation inner">
+        <form action="/register/" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="title">
+                <h2>会员注册</h2>
+            </div>
+            <div class="accountNumber identical">
+                <input type="text" value="" name="username"  placeholder="请输入您的账号"/>
+                <!-- <span>账号已存在</span> -->
+            </div>
+            <div class="password identical">
+                <input type="text" value="" name="password" placeholder="请输入密码"/>
+            </div>
+            <div class="accountNumber identical">
+                    <input type="text" value="" name="name"  placeholder="方便联系，怎么称呼？"/>
+                    <!-- <span>账号已存在</span> -->
+                </div>
+            <style>
+                .captcha {
+                    margin: 10px 0;
+                }
+                .captcha img{
+                    width: 100px;
+                    height: 30px;
+                }
+                .captcha input {
+                    border-bottom: 1px solid #EEEEEE;
+                }
+            </style>
+            <div class="captcha">
+                {{ register_form.captcha }}
+            </div>
+            <div class="btn">
+
+                <style> 
+                .register-btn {
+                    display: inline-block;
+                    height: 40px;
+                    padding: 0 24px;
+                    font-size: 16px;
+                    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+                    line-height: 38px;
+                    text-align: center;
+                    text-decoration: none;
+                    border: 1px solid #2f54eb;
+                    border-radius: 100px;
+                    margin: 10px 0;
+                }
+                </style>
+
+                <input type="submit" class="register-btn" value="点击注册">  
+                <ul>
+                    <li style="margin-right:20px;">
+                        <a href="/login">已有账号</a>
+                    </li>
+                    <li>
+                            <a href="javascript:" onclick="alert('加qq 1310525081 找回密码')" >忘记密码？</a>
+                        </li>
+                </ul>
+            </div>
+            <div>
+                {% for key, error in register_form.errors.items %}
+                  {{ key }}: {{ error }}
+                {% endfor %}
+            </div>
+        </form>
+        
+    </div>
+</main>
+
+<script>
+$('img.captcha').click(function () {
+    $.getJSON("/captcha/refresh/", function (result) {
+        $('.captcha').attr('src', result['image_url']);
+        $('#id_captcha_0').val(result['key'])
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html lang="en">
+    {% load staticfiles %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>☆价格说明-助力2019☆</title>
+
+    <link href="/static/buy/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .form-control::placeholder {
+          color: #ccc;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <link href="/static/buy/form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+
+
+
+
+{% if request.user.is_authenticated %}
+<div class="container">
+        <div class="py-5 text-center">
+          <img class="d-block mx-auto mb-4" src="{% static '/img/logo.png' %}" alt="" >
+          <h2>客服qq-1310525081 </h2>
+          <p class="lead" style="text-align: left;">
+                  1.都是先star完， 你看号的质量，满意付款，长期合作，【先刷在给钱】, <br />
+                  2.客户的任何信息是绝对的保密<br />
+                  3.  全是【2010-2017】年一直【活跃的,大部分有头像】， <br />
+                  4.【有代码提交的高质量】账号。每个用户都生成一份唯一的排序，这些号每天从10000个项目池里面随机star， <br />
+                  5. 点完你的我还需要随机点1-6个左右其他的项目混淆 <br />
+                  6.还有几千次提交的2010-2017年的账号出售<br />
+                  7.安全系数无懈可击，一切随机的， 有时候1个账号star需要等10000秒， 当然可以修改参数【自助加星不需要等待】><br />
+                  8.高安全系数，高质量，采用高匿无重复IP ,从源头治理风险<br />
+                  
+                 【价格说明】:<br />
+                  github star 1¥ 1个，fork 2¥ 1个,  follow 2 ¥1个，  watch 3 ¥1个 , 评论3¥1个， issue4¥1个,修改commits 小绿点显示200¥<br />
+
+          </p>
+        </div>
+      
+      
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2017-2019 浪潮</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Support</a></li>
+          </ul>
+        </footer>
+          </div>
+{% else %}
+<h2>此操作需要先登录 <a href="/login/">点击登录</a></h2>
+
+{% endif %}
+
+
+<script src="/static/buy/jquery-3.3.1.slim.min.js" ></script>
+<script src="/static/buy/bootstrap.bundle.min.js" ></script>
+<script src="/static/buy/form-validation.js"></script>
+
+</body>
+</html>
