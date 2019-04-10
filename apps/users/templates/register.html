@@ -1,123 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
-    {% load staticfiles %}
-<head>
+<html>
+{% load staticfiles %}
+
+<head lang="en">
     <meta charset="UTF-8">
     <title>注册</title>
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/header/header.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/login/login.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/login/register.css' %}"/>
-    <script src="{% static 'js/jquery-1.8.3.js' %}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="stylesheet" href="{% static 'AmazeUI-2.4.2/assets/css/amazeui.min.css' %}" />
+    <link href="{% static 'css/dlstyle.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'AmazeUI-2.4.2/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'AmazeUI-2.4.2/assets/js/amazeui.min.js' %}"></script>
+
 </head>
+
 <body>
-<header>
-    <div class="inner1 clearfix">
-        <div class="logo">
-            <img src="/static/img/logo.png" alt="">
-        </div>
-        <div class="nav">
-            <ul class="clearfix">
-              
-                <li>
-                    <a href="/buy/">会员自助购买</a>
-                </li>
-                <li>
-                    <a href="/goodsList/">订单历史</a>
-                </li>
-            </ul>
-        </div>
-        <div class="loginInfo">
-            <ul class="clearfix">
-                <li>
-                    <a class="login" href="/login">登陆</a>
-                </li>
-                <li>
-                    <a href="/register/">注册</a>
-                </li>
-            </ul>
-        </div>
+
+    <div class="login-boxtitle">
+        <a href="home/demo.html"><img alt="" src="{% static 'images/logobig.png' %}" /></a>
     </div>
-</header>
-<main></main>
-<main>
-    <div class="loginOperation inner">
-        <form action="/register/" method="POST" autocomplete="off">
-            {% csrf_token %}
-            <div class="title">
-                <h2>会员注册</h2>
-            </div>
-            <div class="accountNumber identical">
-                <input type="text" value="" name="username"  placeholder="请输入您的账号"/>
-                <!-- <span>账号已存在</span> -->
-            </div>
-            <div class="password identical">
-                <input type="text" value="" name="password" placeholder="请输入密码"/>
-            </div>
-            <div class="accountNumber identical">
-                    <input type="text" value="" name="name"  placeholder="方便联系，怎么称呼？"/>
-                    <!-- <span>账号已存在</span> -->
+
+    <div class="res-banner">
+        <div class="res-main">
+            <div class="login-banner-bg"><span></span><img src="{% static 'images/big.jpg' %}" /></div>
+            <div class="login-box">
+
+                <div class="am-tabs" id="doc-my-tabs">
+                    <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                        <li class="am-active"><a href="">邮箱注册</a></li>
+                        <li><a href="">手机号注册</a></li>
+                    </ul>
+
+                    <div class="am-tabs-bd">
+                        <div class="am-tab-panel am-active">
+                            <form action="/register/" method="POST" autocomplete="off">
+                                {% csrf_token %}
+
+                                <div class="user-email">
+                                    <label for="username"><i class="am-icon-user"></i></label>
+                                    <input type="text" name="username" id="username" placeholder="请输入用户名">
+                                </div>
+                                <div class="user-pass">
+                                    <label for="password"><i class="am-icon-lock"></i></label>
+                                    <input type="password" name="password" id="password" placeholder="设置密码">
+                                </div>
+                                <div class="user-email">
+                                    <label for="email"><i class="am-icon-envelope-o"></i></label>
+                                    <input type="email" name="email" id="email" placeholder="请输入邮箱账号">
+                                </div>
+
+                                <div class="verification">
+                                    <label for="code"><i class="am-icon-code-fork"></i></label>
+                                    <input type="tel" name="" id="code" placeholder="请输入邮箱验证码">
+                                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();"
+                                        id="sendMobileCode">
+                                        <span id="dyMobileButton">获取</span></a>
+                                </div>
+
+
+
+                            </form>
+
+                            <div class="login-links">
+                                <label for="reader-me">
+                                    <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+                                </label>
+                            </div>
+                            <div class="am-cf">
+                                <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                            </div>
+
+                        </div>
+
+                        <div class="am-tab-panel">
+                            <form method="post">
+                                <div class="user-phone">
+                                    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
+                                    <input disabled type="tel" name="" id="phone" placeholder="请输入手机号">
+                                </div>
+                                <div class="verification">
+                                    <label for="code1"><i class="am-icon-code-fork"></i></label>
+                                    <input disabled type="tel" name="" id="code" placeholder="请输入验证码">
+                                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();"
+                                        id="sendMobileCode1">
+                                        <span id="dyMobileButton1">获取</span></a>
+                                </div>
+                                <div class="user-pass">
+                                    <label for="password"><i class="am-icon-lock"></i></label>
+                                    <input disabled type="password" name="" id="password" placeholder="设置密码">
+                                </div>
+                                <div class="user-pass">
+                                    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
+                                    <input disabled type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                                </div>
+                            </form>
+                            <div class="login-links">
+                                <label for="reader-me">
+                                    <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+                                </label>
+                            </div>
+                            <div class="am-cf">
+                                <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+                            </div>
+
+                            <hr>
+                        </div>
+
+                        <script>
+                            $(function () {
+                                $('#doc-my-tabs').tabs();
+                            })
+                        </script>
+
+                    </div>
                 </div>
-            <style>
-                .captcha {
-                    margin: 10px 0;
-                }
-                .captcha img{
-                    width: 100px;
-                    height: 30px;
-                }
-                .captcha input {
-                    border-bottom: 1px solid #EEEEEE;
-                }
-            </style>
-            <div class="captcha">
-                {{ register_form.captcha }}
-            </div>
-            <div class="btn">
 
-                <style> 
-                .register-btn {
-                    display: inline-block;
-                    height: 40px;
-                    padding: 0 24px;
-                    font-size: 16px;
-                    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-                    line-height: 38px;
-                    text-align: center;
-                    text-decoration: none;
-                    border: 1px solid #2f54eb;
-                    border-radius: 100px;
-                    margin: 10px 0;
-                }
-                </style>
-
-                <input type="submit" class="register-btn" value="点击注册">  
-                <ul>
-                    <li style="margin-right:20px;">
-                        <a href="/login">已有账号</a>
-                    </li>
-                    <li>
-                            <a href="javascript:" onclick="alert('加qq 1310525081 找回密码')" >忘记密码？</a>
-                        </li>
-                </ul>
             </div>
-            <div>
-                {% for key, error in register_form.errors.items %}
-                  {{ key }}: {{ error }}
-                {% endfor %}
-            </div>
-        </form>
-        
-    </div>
-</main>
+        </div>
 
-<script>
-$('img.captcha').click(function () {
-    $.getJSON("/captcha/refresh/", function (result) {
-        $('.captcha').attr('src', result['image_url']);
-        $('#id_captcha_0').val(result['key'])
-    });
-});
-</script>
+        <div class="footer ">
+            <div class="footer-hd ">
+                <p>
+                    <a href="# ">商城首页</a>
+                    <b>|</b>
+                    <a href="# ">物流</a>
+                </p>
+            </div>
+            <div class="footer-bd ">
+                <p>
+                    <a href="# ">合作伙伴</a>
+                    <a href="# ">联系我们</a>
+                    <a href="# ">网站地图</a>
+                    <em>© 2015-2025 版权所有</em>
+                </p>
+            </div>
+        </div>
 </body>
+
 </html>

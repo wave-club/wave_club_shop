@@ -67,6 +67,10 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px #fff inset;}
 input#code {width: 80%;}
 #dyMobileButton{margin-left: 10px;border: 1px solid #DDD;padding: 0px;width: 15%;height: 40px;background: #F4F4F4 none repeat scroll 0% 0%;margin-top: 0px;text-align: center;line-height:40px;color: #333;text-decoration: none;position: absolute;right: 0px;bottom: 0px;}
 
+input#code1 {width: 80%;}
+#dyMobileButton1{margin-left: 10px;border: 1px solid #DDD;padding: 0px;width: 15%;height: 40px;background: #F4F4F4 none repeat scroll 0% 0%;margin-top: 0px;text-align: center;line-height:40px;color: #333;text-decoration: none;position: absolute;right: 0px;bottom: 0px;}
+
+
 
 /*修改的样式*/
 #doc-my-tabs li.am-active a,#doc-my-tabs li a{ background:#f8f8f8;}
