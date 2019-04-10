@@ -43,9 +43,9 @@ h3.title{text-align: center;padding:8px;font-weight: 600;}
 .zcnext{position: absolute;right:5px;top:5px ;padding:5px;font-size:14px ;}
 
 /*主题*/
-.login-form{background:#fff ;width: 100%;}
+.login-form{width: 100%;}
 form{max-width:320px;margin:20px auto ;}
-.user-name,.user-pass,.user-email,.user-phone,.verification{position: relative;height: 42px;margin-bottom:5px;}
+.user-name,.user-pass,.user-email,.user-phone,.verification{position: relative;height: 42px;margin-bottom:8px;}
 form label{position:absolute;display: block;width: 40px;height: 40px;line-height: 40px;background:#fff;text-align: center;top:1px;left:1px}
 form input{font-size: 14px;line-height: 18px;height:42px;padding: 11px 8px 11px 50px;width:100%;border:1px solid #fff;}
 input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px #fff inset;}
