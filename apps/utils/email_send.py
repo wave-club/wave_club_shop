@@ -22,7 +22,7 @@ def send_register_email(email, send_type="register"):
     if send_type == "update_email":
         code = random_str(4)
     else:
-        code = random_str(16)
+        code = random_str(6)
     email_record.code = code
     email_record.email = email
     email_record.send_type = send_type
@@ -33,7 +33,7 @@ def send_register_email(email, send_type="register"):
 
     if send_type == "register":
         email_title = "浪潮科技激活链接"
-        email_body = "请点击下面的链接激活你的账号: http://106.14.185.196/active/{0}".format(code)
+        email_body = "您的验证码是: {0}".format(code)
 
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
         if send_status:

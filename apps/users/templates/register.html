@@ -142,6 +142,26 @@
                 </p>
             </div>
         </div>
+        <script>
+        $(function(){
+            $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+            });
+            $("#dyMobileButton").click(function(){  
+            $.ajax({
+            url:"/send_email/",
+            type:"post",
+            data: {
+                email: $('#email').val()
+            },
+            dataType:"json",
+            success:function(data){
+                console.warn(data)
+            }
+            }); 
+        });
+        })
+        </script>
 </body>
 
 </html>

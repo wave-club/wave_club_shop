@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-from users.views import LoginView, RegisterView
+from users.views import LoginView, RegisterView, SendEmailView
 from goods.views import GoodsView, PriceView, GoodsListView
 
 urlpatterns = [
@@ -27,5 +27,6 @@ urlpatterns = [
     path('goodsList/', GoodsListView.as_view(), name='goodsList'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('send_email/', SendEmailView.as_view(), name='send_email'),
     path('captcha/', include('captcha.urls')),
 ]

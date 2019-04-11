@@ -4,13 +4,28 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import authenticate, login, hashers
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
 
 from .models import UserProfile
 from .forms import LoginForm, RegisterForm
 
 from utils.email_send import send_register_email
+from apiData.result import Result
+
 
 # Create your views here.
+
+
+class SendEmailView(View):
+
+    def post(self, request):
+        send_email = request.POST.get('email', '')
+        print(send_email)
+        if send_email:
+            send_register_email(send_email, "register")
+            return HttpResponse('发送成功')
+        else:
+            return HttpResponse('发送失败')      
 
 class RegisterView(View):
     
