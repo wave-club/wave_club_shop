@@ -6,6 +6,7 @@ from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
 
+print(__name__)
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm
 
@@ -41,16 +42,21 @@ class RegisterView(View):
             user_name = request.POST.get('username', '')
             password = request.POST.get('password', '')
             user_email = request.POST.get('email', '')
+            code = request.POST.get('code', '')
+            codes = EmailVerifyRecord.objects.filter(email=user_email)
+            is_active = False
 
-            if UserProfile.objects.filter(email=user_name):
+            if UserProfile.objects.filter(email=user_email):
                 return render(request, "register.html", {"register_form":register_form, "msg":"用户已经存在"})
                 
-            code = request.POST.get('code', '')
+            for f_code in codes:
+                if f_code.code == code:
+                    is_active = True
+                 
+
             user_profile = UserProfile()
             user_profile.username = user_name
             user_profile.email = user_email
-
-
 
             # user_profile.code = code
             user_profile.password = make_password(password)
