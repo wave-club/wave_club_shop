@@ -45,14 +45,16 @@ class RegisterView(View):
             code = request.POST.get('code', '')
             codes = EmailVerifyRecord.objects.filter(email=user_email)
             is_active = False
-
-            if UserProfile.objects.filter(email=user_email):
-                return render(request, "register.html", {"register_form":register_form, "msg":"用户已经存在"})
                 
             for f_code in codes:
                 if f_code.code == code:
                     is_active = True
                  
+            if not is_active:
+                return render(request, "register.html", {"register_form":register_form, "msg":"邮箱验证码输入错误"})
+
+            if UserProfile.objects.filter(email=user_email):
+                return render(request, "register.html", {"register_form":register_form, "msg":"用户已经存在"})
 
             user_profile = UserProfile()
             user_profile.username = user_name
