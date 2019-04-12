@@ -10,5 +10,7 @@ class RegisterForm(forms.Form):
 
     username = forms.CharField(required=True, min_length = 6, max_length = 40)
     password = forms.CharField(required=True, min_length = 6, max_length = 40)
+    email = forms.CharField(required=True, min_length = 6, max_length = 60)
+    code = forms.CharField(required=True, min_length = 6, max_length = 20)
     captcha = CaptchaField()
 
