@@ -32,29 +32,43 @@ class RegisterView(View):
     
     def get(self, request):
         register_form = RegisterForm()
+        request_data = {
+                'username': '',
+                'password': '',
+                'email': '',
+                'code': ''
+            }
         return render(request, 'register.html', {
-            'register_form': register_form
+            'register_form': register_form,
+            'request_data': request_data
         }) 
     
     def post(self, request):
         register_form = RegisterForm(request.POST)
+        user_name = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user_email = request.POST.get('email', '')
+        code = request.POST.get('code', '')
+        codes = EmailVerifyRecord.objects.filter(email=user_email)
+        is_active = False
+
+        request_data = {
+            'username': user_name,
+            'password': password,
+            'email': user_email,
+            'code': code
+        }
         if register_form.is_valid():
-            user_name = request.POST.get('username', '')
-            password = request.POST.get('password', '')
-            user_email = request.POST.get('email', '')
-            code = request.POST.get('code', '')
-            codes = EmailVerifyRecord.objects.filter(email=user_email)
-            is_active = False
-                
+            
             for f_code in codes:
                 if f_code.code == code:
                     is_active = True
                  
             if not is_active:
-                return render(request, "register.html", {"register_form":register_form, "msg":"邮箱验证码输入错误"})
+                return render(request, "register.html", {"register_form":register_form, "msg":"邮箱验证码输入错误", 'request_data': request_data})
 
             if UserProfile.objects.filter(email=user_email):
-                return render(request, "register.html", {"register_form":register_form, "msg":"用户已经存在"})
+                return render(request, "register.html", {"register_form":register_form, "msg":"用户已经存在", 'request_data': request_data})
 
             user_profile = UserProfile()
             user_profile.username = user_name
@@ -67,7 +81,7 @@ class RegisterView(View):
             # send_register_email(user_name, "register")
             return redirect('/login/')
         else:
-            return render(request, 'register.html', {'register_form': register_form})    
+            return render(request, 'register.html', {'register_form': register_form, 'request_data': request_data})    
 
 class LoginView(View):
     
