@@ -181,6 +181,12 @@
             $.ajaxSetup({
                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
             });
+            $('img.captcha').click(function () {
+            $.getJSON("/captcha/refresh/", function (result) {
+                $('.captcha').attr('src', result['image_url']);
+                $('#id_captcha_0').val(result['key'])
+            });
+        });
             $("#dyMobileButton").click(function(){  
                 time()
                 
@@ -199,7 +205,9 @@
         })
         </script>
 
-
+<script>
+        
+        </script>
 
 </body>
 
