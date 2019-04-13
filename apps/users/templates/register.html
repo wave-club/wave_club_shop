@@ -57,15 +57,15 @@
 
                                 <div class="user-email {% if register_form.errors.email  %} error {% endif %}">
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
-                                    <input type="email" name="email" id="email" placeholder="请输入邮箱账号"  value="{{ request_data.email }}" />
+                                    <input  type="email" name="email" id="email" placeholder="请输入邮箱账号"  value="{{ request_data.email }}" />
                                 </div>
 
                                 <div class="verification {% if register_form.errors.username  %} error {% endif %}">
                                     <label for="code"><i class="am-icon-code-fork"></i></label>
-                                    <input type="text" name="code" id="code" placeholder="请输入邮箱验证码" value="{{ request_data.code }}" />
+                                    <input type="text" name="code" id="code" placeholder="请输入邮箱验证码" style="width:60%;" value="{{ request_data.code }}" />
                                     <a class="btn" href="javascript:void(0);" 
                                         id="sendMobileCode">
-                                        <span id="dyMobileButton">获取</span></a>
+                                        <span id="dyMobileButton">获取验证码</span></a>
                                 </div>
                                 
                                 <style>
@@ -157,10 +157,33 @@
         </div>
         <script>
         $(function(){
+
+            
+            var wait=60;
+            function time() {
+                var o = document.getElementById('dyMobileButton')
+                
+                    if (wait == 0) {
+                        o.removeAttribute("disabled");			
+                        o.innerHTML="免费获取验证码";
+                        wait = 60;
+                    } else {
+                        o.setAttribute("disabled", true);
+                        o.innerHTML="重新发送(" + wait + ")";
+                        wait--;
+                        setTimeout(function() {
+                            time()
+                        },
+                        1000)
+                    }
+                }
+
             $.ajaxSetup({
                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
             });
             $("#dyMobileButton").click(function(){  
+                time()
+                
             $.ajax({
             url:"/send_email/",
             type:"post",
@@ -175,6 +198,9 @@
         });
         })
         </script>
+
+
+
 </body>
 
 </html>
