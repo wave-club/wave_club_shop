@@ -40,59 +40,56 @@
                         <div class="am-tab-panel am-active">
                             <form action="/register/" method="POST" autocomplete="off">
                                 {% csrf_token %}
-
-                                <div class="user-email">
+                                <style>
+                                    .error input[type=text] {
+                                        border: 1px solid red;
+                                    }
+                                </style>
+                                <div class="user-email {% if register_form.errors.username  %} error {% endif %}">
                                     <label for="username"><i class="am-icon-user"></i></label>
                                     <input type="text" name="username" id="username" placeholder="请输入用户名" value="{{ request_data.username }}" />
                                 </div>
                                 
-                                <div class="user-pass">
+                                <div class="user-pass {% if register_form.errors.password  %} error {% endif %}">
                                     <label for="password"><i class="am-icon-lock"></i></label>
                                     <input type="password" name="password" id="password" placeholder="设置密码" value="{{ request_data.password }}" />
                                 </div>
 
-                                <div class="user-email">
+                                <div class="user-email {% if register_form.errors.email  %} error {% endif %}">
                                     <label for="email"><i class="am-icon-envelope-o"></i></label>
                                     <input type="email" name="email" id="email" placeholder="请输入邮箱账号"  value="{{ request_data.email }}" />
                                 </div>
 
-                                <div class="verification">
+                                <div class="verification {% if register_form.errors.username  %} error {% endif %}">
                                     <label for="code"><i class="am-icon-code-fork"></i></label>
-                                    <input type="tel" name="code" id="code" placeholder="请输入邮箱验证码" value="{{ request_data.code }}" />
-                                    <a class="btn" href="javascript:void(0);" onclick="sendMobileCode();"
+                                    <input type="text" name="code" id="code" placeholder="请输入邮箱验证码" value="{{ request_data.code }}" />
+                                    <a class="btn" href="javascript:void(0);" 
                                         id="sendMobileCode">
                                         <span id="dyMobileButton">获取</span></a>
                                 </div>
                                 
                                 <style>
-                                    .captcha {
-                                        margin: 10px 0;
+                                    .captcha img {
+                                        float: right;
+                                        width: 32%;
+                                        height: 40px;
                                     }
-                                    .captcha img{
-                                        width: 100px;
-                                        height: 30px;
-                                    }
-                                    .captcha input {
-                                        border-bottom: 1px solid #EEEEEE;
-                                    }
+                                 .captcha input[type=text] {
+                                    float: left;
+                                    width: 60%;
+                                    padding-left: 11px;
+                                 }
                                 </style>
-                                <div class="captcha">
+                                <div class="captcha user-email">
                                     {{ register_form.captcha }}
                                 </div>
 
                                 <div class="am-cf">
                                     <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
-                                </div>    
-
+                                </div>
+                                <span style="color:red;">{% if msg %} {{ msg }} {% endif %}</span>
                             </form>
-
-                            <div class="login-links">
-                                <label for="reader-me">
-                                    <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
-                                </label>
-                            </div>
                             
-
                         </div>
 
                         <div class="am-tab-panel">

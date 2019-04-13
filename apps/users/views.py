@@ -81,7 +81,7 @@ class RegisterView(View):
             # send_register_email(user_name, "register")
             return redirect('/login/')
         else:
-            return render(request, 'register.html', {'register_form': register_form, 'request_data': request_data})    
+            return render(request, 'register.html', {'msg': '输入错误' ,'register_form': register_form, 'request_data': request_data})    
 
 class LoginView(View):
     
