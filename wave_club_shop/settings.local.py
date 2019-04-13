@@ -123,7 +123,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 ALLOWED_HOSTS = [ '127.0.0.1', 'localhost' ,'106.14.185.196',]
 
@@ -135,3 +135,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+EMAIL_HOST = "smtp.163.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "liujunbingdea3@163.com"
+EMAIL_HOST_PASSWORD = "love6591322"
+EMAIL_USE_TLS= False
+EMAIL_FROM = "liujunbingdea3@163.com"

@@ -2,3 +2,5 @@ __pycache__/
 .DS_Store
 mylog.log
 wave_club_shop/settings.py
+wave_club_shop/settings.local.py
+wave_club_shop/settings.online.py
