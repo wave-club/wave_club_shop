@@ -19,13 +19,34 @@
 <body>
 
     <div class="login-boxtitle">
-        <a href="home.html"><img alt="logo" src="{% static 'images/logobig.png' %}" /></a>
+        <a href="home.html"><img alt="logo" src="{% static 'images/logo.png' %}" /></a>
+        <span style=" float: right; line-height: 60px; font-size: 28px; padding-right: 30px; ">浪潮VIP</span>
     </div>
 
 
     <div class="login-banner">
         <div class="login-main">
-            <div class="login-banner-bg"><span></span><img src="{% static 'images/big.jpg' %}" /></div>
+            <style>
+                .login-banner-bg {
+                    width: 500px;
+                    height: 440px; 
+                    box-sizing: border-box;
+                    padding: 30px 10px;
+                }
+                .login-banner-bg .txt {
+                    font-size: 45px;
+                    color: #fff;
+                    display: block;
+                    line-height: 80px;
+                }
+            </style>
+            <div class="login-banner-bg">
+                <span class="txt">首单满10减8元</span>
+                <span class="txt">首单满30减20元</span>
+                <span class="txt">首单满50减30元</span>
+                <span class="txt">首单满200减100元</span>
+                <span class="txt">首单满400减200元</span>
+            </div>
             <div class="login-box">
 
                 <h3 class="title">会员登录</h3>
@@ -45,7 +66,7 @@
                         </div>
                         <div class="am-cf">
                             <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
-                            <h4 style="margin: 10px 0; font-size: 14px;">{{ msg }} </h4>
+                            <h4 style="margin: 10px 0; font-size: 14px;">{% if msg %} {{ msg }} {% endif %}</h4>
         
                         </div>
                     </form>

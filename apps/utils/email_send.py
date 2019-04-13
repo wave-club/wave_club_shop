@@ -32,7 +32,7 @@ def send_register_email(email, send_type="register"):
     email_body = ""
 
     if send_type == "register":
-        email_title = "浪潮科技激活链接"
+        email_title = "浪潮科技邮箱验证码"
         email_body = "您的验证码是: {0}".format(code)
 
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])

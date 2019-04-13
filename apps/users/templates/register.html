@@ -21,13 +21,36 @@
 
 <body>
 
-    <div class="login-boxtitle">
-        <a href="home/demo.html"><img alt="" src="{% static 'images/logobig.png' %}" /></a>
-    </div>
+        <div class="login-boxtitle">
+                <a href="home.html"><img alt="logo" src="{% static 'images/logo.png' %}" /></a>
+                <span style=" float: right; line-height: 60px; font-size: 28px; padding-right: 30px; ">浪潮VIP</span>
+            </div>
 
     <div class="res-banner">
         <div class="res-main">
-            <div class="login-banner-bg"><span></span><img src="{% static 'images/big.jpg' %}" /></div>
+                <div class="login-banner">
+                        <div class="login-main">
+                            <style>
+                                .login-banner-bg {
+                                    width: 500px;
+                                    height: 440px; 
+                                    box-sizing: border-box;
+                                    padding: 30px 10px;
+                                }
+                                .login-banner-bg .txt {
+                                    font-size: 45px;
+                                    color: #fff;
+                                    display: block;
+                                    line-height: 80px;
+                                }
+                            </style>
+                            <div class="login-banner-bg">
+                                <span class="txt">首单满10减8元</span>
+                                <span class="txt">首单满30减20元</span>
+                                <span class="txt">首单满50减30元</span>
+                                <span class="txt">首单满200减100元</span>
+                                <span class="txt">首单满400减200元</span>
+                            </div>
             <div class="login-box">
 
                 <div class="am-tabs" id="doc-my-tabs">
@@ -188,7 +211,7 @@
                 $('#id_captcha_0').val(result['key'])
             });
         });
-            $("#dyMobileButton").click(function(){  
+            $("#dyMobileButton").click(function(){ 
                 time()
                 
             $.ajax({

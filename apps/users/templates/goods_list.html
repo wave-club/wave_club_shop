@@ -10,7 +10,7 @@
     <meta name="generator" content="Jekyll v3.8.5">
     <title>☆我的订单-助力2019☆</title>
 
-    <link href="/static/buy/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <style>
       .bd-placeholder-img {
@@ -31,7 +31,7 @@
         }
       }
     </style>
-    <link href="/static/buy/form-validation.css" rel="stylesheet">
+    <link href="{% static 'css/form-validation.css' %}" rel="stylesheet">
   </head>
   <body class="bg-light">
     
@@ -50,7 +50,7 @@
                   github star 1¥ 1个，fork 2¥ 1个,  follow 2 ¥1个，  watch 3 ¥1个 , 评论3¥1个， issue4¥1个,修改commits 小绿点显示200¥<br />
           </p>
           <a href="/buy/" style="margin-right: 20px;">前往购买</a>
-          <a href="/static/img/WechatPay.jpeg">我要支付(<span style="color:red;">备注订单号</span>)</a>
+          <a href="/static/images/WechatPay.jpeg">我要支付(<span style="color:red;">备注订单号</span>)</a>
 
         </div>
         <div>
@@ -156,9 +156,9 @@
 {% endif %}
 
 
-<script src="/static/buy/jquery-3.3.1.slim.min.js" ></script>
-<script src="/static/buy/bootstrap.bundle.min.js" ></script>
-<script src="/static/buy/form-validation.js"></script>
+<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" ></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>
+<script src="{% static 'js/form-validation.js' %}"></script>
 
 </body>
 </html>
