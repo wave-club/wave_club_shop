@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
 from users.views import LoginView, RegisterView, SendEmailView
 from goods.views import GoodsView, PriceView, GoodsListView
 
