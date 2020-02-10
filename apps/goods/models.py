@@ -2,7 +2,6 @@ from django.db import models
 from datetime import datetime 
 
 # Create your models here.
-from users.models import UserProfile
 
 class Goods(models.Model):
 
@@ -27,7 +26,7 @@ class Goods(models.Model):
     is_flag = models.BooleanField(default=False, verbose_name="是否执行过" )
     add_time = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     update_time = models.DateTimeField(auto_now=True, blank=True, null=True)
-    order_price = models.IntegerField(default=0, blank=True, null=True,verbose_name="订单价格")
+    order_price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2, blank=True, null=True,verbose_name="订单价格")
     order_data = models.TextField(default='', blank=True, null=True,verbose_name="数据排序")
     # True 已支付
     order_payed = models.BooleanField(default=False, verbose_name="支付状态" )
